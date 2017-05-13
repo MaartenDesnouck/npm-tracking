@@ -17,5 +17,5 @@ function main() {
 
     var npmTimeFomat = Utilities.formatDate(statDate, timezone, 'yyyy-MM-dd');
     var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/google-apps-script'));
-    setValue(row, 2, RAW, data.downloads);
+    setValue(row, 1, RAW, data.downloads);
 }
