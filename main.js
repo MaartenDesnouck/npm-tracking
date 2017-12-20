@@ -17,5 +17,18 @@ function main() {
 
     var npmTimeFomat = Utilities.formatDate(statDate, timezone, 'yyyy-MM-dd');
     var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/google-apps-script'));
+    Logger.log(data);
     setValue(row, 1, RAW, data.downloads);
+    var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/node-google-apps-script'));
+    setValue(row, 3, RAW, data.downloads);
+  
+    //Populate interval
+    //value = 0;
+    //while (value < row){
+      //var statDate = new Date(STARTDATUM.getTime() + (86400 * 1000 * value));
+      //var npmTimeFomat = Utilities.formatDate(statDate, timezone, 'yyyy-MM-dd');
+      //var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/node-google-apps-script'));
+      //setValue(value, 3, RAW, data.downloads);
+      //value = value+1;
+    //}
 }
