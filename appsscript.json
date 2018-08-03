@@ -2,17 +2,9 @@
   "timeZone": "Etc/GMT",
   "dependencies": {
     "libraries": [{
-      "userSymbol": "GoogleSheet",
-      "libraryId": "1rJ5HehXdb6YKXXcSEBQgynzyNUr9HdzelV18rCB4_GodXxSO3cQZY11F",
-      "version": "3"
-    }, {
       "userSymbol": "Web",
       "libraryId": "1IjdJPsFc9vCjEii9beMchFK8NpZotqNmevONMT4Hcu0c2StpnOnX7a3T",
       "version": "2"
-    }, {
-      "userSymbol": "Time",
-      "libraryId": "1W-lpHcsZZ5C-Uqy2Sm6Sm-d5rSA1y6c-71WVyighvEIO2yAZxrnxgtNG",
-      "version": "1"
     }]
   },
   "exceptionLogging": "STACKDRIVER"
