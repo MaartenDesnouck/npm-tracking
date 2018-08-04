@@ -12,24 +12,22 @@ function main() {
 
   // Setting data
   var myTimeFormat = Utilities.formatDate(statDate, timezone, 'dd-MM-yyyy');
-  var row = time_dayDiff(STARTDATUM, statDate);
-  sheet_setValue(row, 0, RAW, myTimeFormat);
-
-  var npmTimeFomat = Utilities.formatDate(statDate, timezone, 'yyyy-MM-dd');
-  var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/google-apps-script'));
-  sheet_setValue(row, 1, RAW, data.downloads);
-  var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/node-google-apps-script'));
-  sheet_setValue(row, 3, RAW, data.downloads);
-  var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/@google/clasp'));
-  sheet_setValue(row, 5, RAW, data.downloads);
+  var finalRow = time_dayDiff(STARTDATUM, statDate);
+  sheet_setValue(finalRow, 0, RAW, myTimeFormat);
 
   // Populate interval
-  //value = 0;
-  //while (value < row){
-  //var statDate = new Date(STARTDATUM.getTime() + (86400 * 1000 * value));
-  //var npmTimeFomat = Utilities.formatDate(statDate, timezone, 'yyyy-MM-dd');
-  //var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/node-google-apps-script'));
-  //sheet_setValue(value, 3, RAW, data.downloads);
-  //value = value+1;
-  //}
+  row = finalRow - 5;
+  while (row <= finalRow){
+    var statDate = new Date(STARTDATUM.getTime() + (86400 * 1000 * (row-1)));
+    var npmTimeFomat = Utilities.formatDate(statDate, timezone, 'yyyy-MM-dd');
+    
+    var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/google-apps-script'));
+    sheet_setValue(row, 1, RAW, data.downloads);
+    var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/node-google-apps-script'));
+    sheet_setValue(row, 3, RAW, data.downloads);
+    var data = JSON.parse(Web.getHTML('https://api.npmjs.org/downloads/point/' + npmTimeFomat + '/@google/clasp'));
+    sheet_setValue(row, 5, RAW, data.downloads);
+    
+    row = row + 1;
+  }
 }
